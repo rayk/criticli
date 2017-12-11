@@ -1,0 +1,55 @@
+{
+  "name": "criticide-cli",
+  "version": "0.0.1",
+  "description": "Criticide Command Line Interface",
+  "main": "criticide",
+  "repository": "https://github.com/rayk/criticide-engine",
+  "author": "Ray King <taipan.king@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "ramda": "^0.25.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.13.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "jest": "^21.2.1",
+    "prettier": "^1.9.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": 9
+          },
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "prettier"
+    ],
+    "plugins": [
+      "eslint-plugin-prettier"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  }
+}
