@@ -1,5 +1,5 @@
 {
-  "name": "criticide-cli",
+  "name": "criticide",
   "version": "0.0.1",
   "description": "Criticide Command Line Interface",
   "main": "criticide",
@@ -7,10 +7,17 @@
   "author": "Ray King <taipan.king@gmail.com>",
   "license": "MIT",
   "private": true,
-  "scripts": {},
+  "preferGlobal": true,
+  "bin": {
+    "criticide": ".index.js"
+  },
   "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.12.2",
     "dotenv": "^4.0.0",
-    "ramda": "^0.25.0"
+    "inquirer": "^4.0.1",
+    "ramda": "^0.25.0",
+    "string": "^3.3.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
