@@ -44,8 +44,14 @@ const askUser = async payload => {
 
 addProject
   .description("Creates a new project for modeling and simulation.")
-  .option("-f --force", "Overwrite existing project with the same name")
-  .option("-d --default", "Set the new project as the default project")
+  .option(
+    "-d --default",
+    "set the newly created project as the default project."
+  )
+  .option(
+    "-f --force",
+    "overwrites any existing project that has the same name, all associated project data is removed."
+  )
   .parse(process.argv);
 
 askUser(addProject).then(result => console.log(result));

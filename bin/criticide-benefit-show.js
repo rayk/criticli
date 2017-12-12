@@ -6,5 +6,5 @@ const R = require("ramda");
 const S = require("string");
 
 showBenefit
-  .description("show al the details of specified benefit")
+  .description("Show all the details of specified benefit")
   .parse(process.argv);

@@ -3,11 +3,13 @@
 const project = require("commander");
 const chalk = require("chalk");
 
-project.description("manage opportunity envelope.");
+project.description(
+  "Manage the observations of the built software the current default or the specified project."
+);
 
 project
-  .command("add [project]", "observation for specified project.")
-  .command("list [filter]", "observations which match the specific filter")
+  .command("add", "new observation")
+  .command("list", "list all observations")
   .command("del [obId..]", "permanently remove specified observations");
 
 project.parse(process.argv);

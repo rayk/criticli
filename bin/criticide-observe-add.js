@@ -7,6 +7,10 @@ const S = require("string");
 
 addObserve
   .description(
-    "Adds a new observation to specified project about benefits in the built software. Default used when unspecified."
+    "Records a new observation related to the currently default or specified project built software."
+  )
+  .option(
+    "-p, --project [project]",
+    "specify a project which the observations relates to"
   )
   .parse(process.argv);

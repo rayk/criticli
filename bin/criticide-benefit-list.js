@@ -7,6 +7,10 @@ const S = require("string");
 
 listBenefit
   .description(
-    "list all the benefits in the current project, refined based on any specified filter"
+    "List all the benefits in the current default project or the specified project."
+  )
+  .option(
+    "-p, --project [project]",
+    "specify a project for which to list all benefits"
   )
   .parse(process.argv);

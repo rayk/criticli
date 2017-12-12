@@ -22,4 +22,6 @@ cli
   .command("observe [action]", "manage observations of the software")
   .alias("o");
 
+cli.option("-s, --state", "output the current state store contents");
+
 cli.parse(process.argv);

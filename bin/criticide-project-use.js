@@ -6,5 +6,5 @@ const R = require("ramda");
 const S = require("string");
 
 useProject
-  .description("uses the specified project as the default.")
+  .description("Uses the specified project as the default.")
   .parse(process.argv);

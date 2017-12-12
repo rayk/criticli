@@ -6,7 +6,7 @@ const chalk = require("chalk");
 console.log(chalk.green("\f  Current Default Project: "));
 
 benefit.description(
-  "operates on the benefits of the currently selected project."
+  "Manage the benefits of the currently default or specified project."
 );
 
 benefit
@@ -16,6 +16,5 @@ benefit
   .command("list [filter]", "benefits matching the specified filter")
   .command("rank", "rank benefits failure impact")
   .command("show [benefit]", "all the details of the specified benefit");
-
 
 benefit.parse(process.argv);

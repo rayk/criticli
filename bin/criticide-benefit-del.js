@@ -7,6 +7,10 @@ const S = require("string");
 
 delBenefit
   .description(
-    "permanently removes the specified benefit from the current default project"
+    "Permanently removes the specified benefit from the current project unless an ID is specified."
+  )
+  .option(
+    "-i, --id [benefitID]",
+    "specific benefit, could be located in any project"
   )
   .parse(process.argv);

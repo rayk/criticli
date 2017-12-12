@@ -12,10 +12,13 @@ project.description(
 
 project
   .command("add [name]", "create new project for modeling and simulation")
-  .command("del [project]", "deletes the specified project")
-  .command("edit [project]", "properties of the specified project")
-  .command("list [filter]", "projects matching the specified filter")
-  .command("show [project]", "all the details of the specified project")
-  .command("use [project]", "as the default project");
+  .command(
+    "del",
+    "deletes current default project, previous default becomes new default"
+  )
+  .command("edit", "properties of the current default project")
+  .command("list", "all projects which criticide is tracking")
+  .command("show", "all the details of the current default project")
+  .command("use [project]", "as the new default project");
 
 project.parse(process.argv);
