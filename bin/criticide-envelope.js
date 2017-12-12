@@ -6,8 +6,9 @@ const chalk = require("chalk");
 project.description("manage opportunity envelope.");
 
 project
-  .command("open [project]", "Opportunity envelope for the specified project.")
-  .command("plot [benefit]", "deletes the specified project")
-  .command("edit [benefit]", "properties of the specified project");
+  .command("edit [envelope]", "properties of the specified envelop")
+  .command("list [project]", "list all the envelope for a specified project")
+  .command("open [project]", "new envelope for the specified project.")
+  .command("plot [envelope]", "graph of the specified envelope");
 
 project.parse(process.argv);
