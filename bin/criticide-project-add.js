@@ -6,6 +6,7 @@ const R = require("ramda");
 const S = require("string");
 
 const input = require("./elements/readInput");
+const action = require("../lib/actions");
 
 const askUser = async payload => {
   return await ask
@@ -60,5 +61,7 @@ addProject
   .parse(process.argv);
 
 askUser(input.mapFromCli(addProject)).then(answer => {
-  console.log("Payload for API => " + JSON.stringify(answer));
+  console.log(
+    "Payload for API => " + JSON.stringify(action.addProject(answer))
+  );
 });

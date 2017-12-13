@@ -17,6 +17,7 @@
     "dotenv": "^4.0.0",
     "inquirer": "^4.0.1",
     "ramda": "^0.25.0",
+    "redux": "^3.7.2",
     "string": "^3.3.3"
   },
   "devDependencies": {
