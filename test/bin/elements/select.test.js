@@ -4,7 +4,7 @@ const state = require("../../resources/store");
 
 test("Returns the only one active project.", () => {
   const result = select.currentProject(state);
-  expect(result.length).toBe(1);
+  expect(result).toHaveLength(1);
   expect(R.prop("isDefault", R.head(result))).toBe(true);
 });
 

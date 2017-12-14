@@ -1,5 +1,5 @@
-const R = require("ramda");
-const S = require("string");
+const R = require('ramda');
+const S = require('string');
 
 /**
  * Reads the command line input.
@@ -9,10 +9,10 @@ const S = require("string");
 const mapFromCli = rawInputs => {
   const optionKeyList = R.map(
     R.drop(2),
-    R.map(R.prop("long"), rawInputs.options)
+    R.map(R.prop('long'), rawInputs.options)
   );
   return R.assoc(
-    "args",
+    'args',
     S(R.head(rawInputs.args)).titleCase().s,
     R.zipObj(
       optionKeyList,

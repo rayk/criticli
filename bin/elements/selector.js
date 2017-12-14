@@ -1,12 +1,12 @@
-const R = require("ramda");
-const assert = require("assert");
+const R = require('ramda');
+const assert = require('assert');
 
-const PROJECT_DEFAULT_KEY = "isDefault";
-const PROJECT_DESCRIPTION_KEY = "description";
-const PROJECT_IS_DEFAULT_KEY = "isDefault";
-const PROJECT_NAME_KEY = "name";
-const PROJECT_IS_ACTIVE_KEY = "isActive";
-const STATE_PROJECTS_KEY = "projects";
+const PROJECT_DEFAULT_KEY = 'isDefault';
+const PROJECT_DESCRIPTION_KEY = 'description';
+const PROJECT_IS_DEFAULT_KEY = 'isDefault';
+const PROJECT_NAME_KEY = 'name';
+const PROJECT_IS_ACTIVE_KEY = 'isActive';
+const STATE_PROJECTS_KEY = 'projects';
 
 const projectsObjectLens = R.lensProp(STATE_PROJECTS_KEY);
 
@@ -22,7 +22,7 @@ const allProjects = store => {
   assert.notEqual(
     resultList.length,
     0,
-    "There always must be one defined project"
+    'There always must be one defined project'
   );
   return resultList;
 };
@@ -40,7 +40,7 @@ const currentProject = store => {
   assert.equal(
     resultList.length,
     1,
-    "One and Only One default project should exist."
+    'One and Only One default project should exist.'
   );
   return resultList;
 };

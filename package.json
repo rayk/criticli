@@ -24,17 +24,19 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^7.0.0-0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "eslint": "^4.13.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-jest": "^21.4.3",
     "eslint-plugin-prettier": "^2.3.1",
     "jest": "^21.2.1",
     "prettier": "^1.9.1",
-    "regenerator-runtime": "^0.11.1"
+    "prettier-eslint": "^8.3.1"
   },
   "babel": {
     "presets": [
@@ -42,26 +44,32 @@
         "env",
         {
           "targets": {
-            "node": 9
-          },
-          "useBuiltIns": true
+            "node": "current"
+          }
         }
       ]
-    ]
+    ],
+    "plugins": [
+      "transform-async-to-generator"
+    ],
+    "sourceMaps": "both"
   },
   "eslintConfig": {
     "env": {
       "node": true
     },
     "extends": [
-      "prettier"
+      "prettier",
+      "prettier/standard",
+      "plugin:jest/recommended"
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "jest"
     ],
     "parser": "babel-eslint",
     "rules": {
-      "prettier/prettier": "error"
+      "prettier/prettier": ["error", { "singleQuote": true }]
     }
   },
   "jest": {
