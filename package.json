@@ -54,11 +54,14 @@
       "prettier"
     ],
     "plugins": [
-      "eslint-plugin-prettier"
+      "prettier"
     ],
     "parser": "babel-eslint",
     "rules": {
       "prettier/prettier": "error"
     }
+  },
+  "jest": {
+    "verbose": true
   }
 }

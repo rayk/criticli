@@ -3,8 +3,13 @@
 const project = require("commander");
 const R = require("ramda");
 const chalk = require("chalk");
+const store = require("../dist/lib/store");
+const select = require("./elements/select");
+const out = message => console.log(message);
 
-console.log(chalk.green("\f  Current Default Project: \f"));
+const currentProject = R.prop("name", R.head(select.currentProject(store)));
+
+out(chalk.yellow("\f  Current Default Project: " + currentProject + "\f"));
 
 project.description(
   "Operates on a specified project if not explicitly given all actions are applied to the default project."
