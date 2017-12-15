@@ -1,6 +1,6 @@
 {
   "name": "criticide-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticide.js",
   "repository": {
