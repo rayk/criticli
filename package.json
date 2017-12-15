@@ -1,20 +1,37 @@
 {
   "name": "criticide-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticide.js",
-  "repository": "https://github.com/rayk/criticide-cli",
-  "bugs": {"url": "https://github.com/rayk/criticide-cli/issues", "email": "bug@k2bz.com"},
+  "repository": {
+    "url": "https://github.com/rayk/criticide-cli",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/rayk/criticide-cli/issues",
+    "email": "bug@k2bz.com"
+  },
   "homepage": "http://www.criticide.com",
   "author": "Ray King <taipan.king@gmail.com>",
   "license": "MIT",
-  "keywords": ["project management", "simulation", "cli", "probability", "methodology", "ai"],
+  "keywords": [
+    "project management",
+    "simulation",
+    "cli",
+    "probability",
+    "methodology",
+    "ai"
+  ],
   "private": false,
   "preferGlobal": true,
   "bin": {
     "criticide": "bin/criticide.js"
   },
+  "scripts": {
+    "distro": "babel bin --presets babel-preset-env --out-dir distribution"
+  },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
     "dotenv": "^4.0.0",
@@ -39,7 +56,8 @@
     "eslint-plugin-prettier": "^2.3.1",
     "mocha": "^4.0.1",
     "prettier": "^1.9.1",
-    "prettier-eslint": "^8.3.1"
+    "prettier-eslint": "^8.3.1",
+    "webpack": "^3.10.0"
   },
   "babel": {
     "presets": [
