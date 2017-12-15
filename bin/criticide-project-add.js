@@ -5,7 +5,7 @@ const S = require('string');
 const sid = require('shortid');
 
 const input = require('./elements/readInput');
-const action = require('../lib/actions');
+const action = require('../lib/actions/project');
 
 const askUser = async payload => {
   return await ask
@@ -14,8 +14,9 @@ const askUser = async payload => {
         type: 'input',
         name: 'name',
         message: 'What name would you like to give this project',
-        validate: value =>
-          R.isEmpty(value) ? 'A project requires a name' : true,
+        validate: value => {
+          return R.isEmpty(value) ? 'A project requires a name' : true;
+        },
         filter: value => S(value).titleCase().s,
         when: R.not(payload.args)
       },

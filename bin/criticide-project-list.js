@@ -1,5 +1,3 @@
-#!/usr/bin/env node --harmony
-
 const listProject = require('commander');
 const ask = require('inquirer');
 const R = require('ramda');

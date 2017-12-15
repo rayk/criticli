@@ -1,5 +1,3 @@
-#!/usr/bin/env node --harmony
-
 const project = require('commander');
 const chalk = require('chalk');
 

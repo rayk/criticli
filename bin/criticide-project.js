@@ -1,10 +1,8 @@
-#!/usr/bin/env node --harmony
-
 const project = require('commander');
 const R = require('ramda');
 const chalk = require('chalk');
-const store = require('../dist/lib/store');
-const select = require('./elements/select');
+const store = require('../lib/store');
+const select = require('./elements/selector');
 const out = message => console.log(message);
 
 const currentProject = R.prop('name', R.head(select.currentProject(store)));

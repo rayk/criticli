@@ -1,6 +1,13 @@
 module.exports = function(wallaby) {
   return {
-    files: ["bin/**/*.js", "lib/**/*.js"],
-    tests: ["test/**/*.js"]
+    env: {
+      type: 'node'
+    },
+    files: ['bin/**/*.js', 'lib/**/*.js'],
+    tests: ['test/bin/**/*.js', 'test/**/*.js'],
+    testFramework: 'mocha',
+    compilers: {
+      '**/*.js': wallaby.compilers.babel()
+    }
   };
 };

@@ -1,14 +1,10 @@
-const R = require("ramda");
-const select = require("../../../bin/elements/selector");
-const state = require("../../resources/store");
+const select = require('../../../bin/elements/selector');
+const state = require('../../resources/store.js');
+const assert = require('assert-plus');
 
-test("Returns the only one active project.", () => {
-  const result = select.currentProject(state);
-  expect(result).toHaveLength(1);
-  expect(R.prop("isDefault", R.head(result))).toBe(true);
-});
-
-test("Returns a list of all projects.", () => {
-  const result = select.allProjects(state);
-  console.log(result);
+describe('Selecting from state.', () => {
+  it('should only one active project', () => {
+    const result = select.currentProject(state);
+    assert.equal(result.length, 1);
+  });
 });

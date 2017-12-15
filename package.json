@@ -1,15 +1,15 @@
 {
-  "name": "criticide",
+  "name": "criticide-cli",
   "version": "0.0.2",
   "description": "Criticide Command Line Interface",
-  "main": "criticide",
+  "main": "bin/criticide.js",
   "repository": "https://github.com/rayk/criticide-engine",
   "author": "Ray King <taipan.king@gmail.com>",
   "license": "MIT",
   "private": false,
   "preferGlobal": true,
   "bin": {
-    "criticide": ".index.js"
+    "criticide": "bin/criticide.js"
   },
   "dependencies": {
     "chalk": "^2.3.0",
