@@ -3,9 +3,12 @@
   "version": "0.0.3",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticide.js",
-  "repository": "https://github.com/rayk/criticide-engine",
+  "repository": "https://github.com/rayk/criticide-cli",
+  "bugs": {"url": "https://github.com/rayk/criticide-cli/issues", "email": "bug@k2bz.com"},
+  "homepage": "http://www.criticide.com",
   "author": "Ray King <taipan.king@gmail.com>",
   "license": "MIT",
+  "keywords": ["project management", "simulation", "cli", "probability", "methodology", "ai"],
   "private": false,
   "preferGlobal": true,
   "bin": {
