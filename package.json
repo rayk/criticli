@@ -1,6 +1,6 @@
 {
   "name": "criticide-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticide.js",
   "repository": {
@@ -27,11 +27,14 @@
   "bin": {
     "criticide": "bin/criticide.js"
   },
+  "engines": {
+    "node": ">9.1.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "distro": "babel bin --presets babel-preset-env --out-dir distribution"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
     "dotenv": "^4.0.0",
@@ -57,8 +60,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "mocha": "^4.0.1",
     "prettier": "^1.9.1",
-    "prettier-eslint": "^8.3.1",
-    "webpack": "^3.10.0"
+    "prettier-eslint": "^8.3.1"
   },
   "babel": {
     "presets": [
