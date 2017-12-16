@@ -1,12 +1,14 @@
-#!/usr/bin/env
+#!/usr/bin/env node
+'use strict';
+
 const cli = require('commander');
-const R = require('ramda');
 const pkg = require('../package');
 const chalk = require('chalk');
 
 console.log(
   chalk.yellow.bold('Criticide Command Line Interface - ' + pkg.version)
 );
+
 cli
   .version(pkg.version)
   .description(
@@ -32,4 +34,3 @@ cli.option('-s, --state', 'output the current state store contents');
 cli.option('-p, --path', 'outputs the pat the current working directory');
 
 cli.parse(process.argv);
-

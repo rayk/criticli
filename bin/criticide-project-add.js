@@ -5,7 +5,7 @@ const S = require('string');
 const sid = require('shortid');
 
 const input = require('./elements/readInput');
-const action = require('../lib/actions/project');
+const action = require('./actions/project');
 
 const askUser = async payload => {
   return await ask

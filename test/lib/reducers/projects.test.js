@@ -1,5 +1,5 @@
-const action = require('../../../lib/actions/project');
-const reducers = require('../../../lib/reducers/projects');
+const action = require('../../../bin/actions/project');
+const reducers = require('../../../bin/reducers/projects');
 const assert = require('assert-plus');
 
 describe('Reducers project actions.', () => {

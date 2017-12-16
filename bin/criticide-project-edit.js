@@ -5,7 +5,7 @@ const S = require('string');
 
 const input = require('./elements/readInput');
 const select = require('./elements/selector');
-const store = require('../lib/store');
+const store = require('./store');
 
 const projectList = select.allProjects(store);
 
