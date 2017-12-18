@@ -1,4 +1,5 @@
 const project = require('commander');
+
 project.description(
   'Operates on a specified project if not explicitly given all actions are applied to the default project.'
 );

@@ -1,6 +1,7 @@
 const ask = require('inquirer');
 const chalk = require('chalk');
 const config = require('./env/config');
+const pkg = require('../package');
 const R = require('ramda');
 const S = require('string');
 const os = require('os');
@@ -37,15 +38,15 @@ const askUser = async payload => {
       }
     ])
     .then(collected => {
-      return collected;
+      return R.merge(payload, collected);
     });
 };
 
-askUser({}).then(answer => {
+askUser({ version: pkg.version }).then(answer => {
   if (answer.overwrite) {
     const spinner = ora().start('Starting Portfolio initialisation!');
     config
-      .initConfig(answer.name, answer.path)
+      .initConfig(answer.name, answer.path, answer.version)
       .then(configPath => {
         config.getConfig(configPath).then(result => {
           spinner.succeed(

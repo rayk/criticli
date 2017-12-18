@@ -5,6 +5,8 @@ const cli = require('commander');
 const pkg = require('../package');
 const chalk = require('chalk');
 
+const startup = require('./store/startup');
+
 console.log(
   chalk.yellow.bold('Criticide Command Line Interface - ' + pkg.version)
 );
@@ -33,4 +35,10 @@ cli
 cli.option('-s, --state', 'output the current state store contents');
 cli.option('-p, --path', 'outputs the pat the current working directory');
 
-cli.parse(process.argv);
+startup.isStoreInitialised().then(result => {
+  cli.parse(process.argv);
+  const headLine = result
+    ? 'Init'
+    : chalk.red('\f  This directory has not been initialised!');
+  console.log(headLine);
+});

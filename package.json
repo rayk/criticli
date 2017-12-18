@@ -1,14 +1,14 @@
 {
-  "name": "criticide-cli",
-  "version": "0.0.8",
+  "name": "criticli",
+  "version": "0.0.10",
   "description": "Criticide Command Line Interface",
-  "main": "bin/criticide.js",
+  "main": "bin/criticli.js",
   "repository": {
-    "url": "https://github.com/rayk/criticide-cli",
+    "url": "https://github.com/rayk/criticli",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/rayk/criticide-cli/issues",
+    "url": "https://github.com/rayk/criticli/issues",
     "email": "bug@k2bz.com"
   },
   "homepage": "http://www.criticide.com",
@@ -25,7 +25,7 @@
   "private": false,
   "preferGlobal": true,
   "bin": {
-    "criticide": "bin/criticide.js"
+    "criticli": "bin/criticli.js"
   },
   "engines": {
     "node": ">9.1.0"
