@@ -47,8 +47,9 @@ askUser({ version: pkg.version }).then(answer => {
     const spinner = ora().start('Starting Portfolio initialisation!');
     config
       .initConfig(answer.name, answer.path, answer.version)
-      .then(configPath => {
-        config.getConfig(configPath).then(result => {
+      .then(result => {
+        const pathToConfig = result;
+        config.getConfig(pathToConfig).then(result => {
           spinner.succeed(
             'Successfully completed initialisation of ' +
               result.config.portfolio

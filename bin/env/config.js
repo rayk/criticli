@@ -1,13 +1,23 @@
 /**
  * Configuration Module
  */
+const fs = require('fs-extra');
 const io = require('./io-ops');
 const p = require('path');
+const pkg = require('../../package');
 const CONFIG_FILE_NAME = 'criticide-config';
 
+/**
+ * Initial State Object
+ * @param name
+ * @param homePath
+ * @param version
+ * @return {{state: {defaultProject: string, projects: {}}, config: {path: *, initDate: Date, portfolio: *, version: *}}}
+ */
 const baseConfiguration = (name, homePath, version) => {
   return {
     state: {
+      defaultProject: '',
       projects: {}
     },
     config: {
@@ -20,16 +30,18 @@ const baseConfiguration = (name, homePath, version) => {
 };
 
 /**
- * Returns a configuration located in the path.
- * @param {string} path
+ * Returns a state object which may or may not be initialised.
+ * @return {Promise<{{state: {defaultProject: string, projects: {}}, config: {path: string, initDate: Date, portfolio: string, version: string}}}>}
  */
-const getConfig = async path => {
-  const pathProperties = p.parse(path);
-  const configFile = CONFIG_FILE_NAME + '.json';
-  return await io
-    .readJSONFile(p.join(pathProperties.root, pathProperties.dir, configFile))
-    .then(config => {
-      return config;
+const getConfig = async () => {
+  const configFilePath = p.join(process.cwd(), CONFIG_FILE_NAME + '.json');
+  return await fs
+    .readJSON(configFilePath)
+    .then(output => {
+      return output;
+    })
+    .catch(err => {
+      return baseConfiguration(undefined, process.cwd(), pkg.version);
     });
 };
 
@@ -43,7 +55,7 @@ const getConfig = async path => {
 const initConfig = async (portfolioName, path, version) => {
   const state = baseConfiguration(portfolioName, path, version);
   const emptyDirectory = await io.createSubDirectory(path);
-  return await io
+  await io
     .createJSONFile(emptyDirectory, CONFIG_FILE_NAME, state)
     .then(fullPath => {
       return fullPath;

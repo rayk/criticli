@@ -2,10 +2,11 @@
 'use strict';
 
 const cli = require('commander');
+const R = require('ramda');
 const pkg = require('../package');
 const chalk = require('chalk');
 
-const startup = require('./store/startup');
+const env = require('./env/config');
 
 console.log(
   chalk.yellow.bold('Criticide Command Line Interface - ' + pkg.version)
@@ -35,10 +36,19 @@ cli
 cli.option('-s, --state', 'output the current state store contents');
 cli.option('-p, --path', 'outputs the pat the current working directory');
 
-startup.isStoreInitialised().then(result => {
+env.getConfig().then(result => {
   cli.parse(process.argv);
-  const headLine = result
-    ? 'Init'
-    : chalk.red('\f  This directory has not been initialised!');
-  console.log(headLine);
+  const defaultProject =
+    result.config.portfolio && result.state.defaultProject
+      ? `Default project set to: ${result.state.defaultProject}`
+      : "Run 'criticli init', then create a project using 'criticli project add'.";
+  const headLine = result.config.portfolio
+    ? chalk.green(`${result.config.portfolio} Portfolio.`)
+    : chalk.red('This directory as not been initialised.');
+  const projectLine =
+    result.config.portfolio && R.empty(result.state.defaultProject)
+      ? chalk.yellow('No projects defined for this portfolio.')
+      : chalk.green(`${defaultProject}`);
+  console.log(`\f  ${headLine}`);
+  console.log(`\f  ${projectLine}`);
 });

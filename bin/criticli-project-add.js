@@ -1,11 +1,13 @@
 const addProject = require('commander');
 const ask = require('inquirer');
+const chalk = require('chalk');
 const R = require('ramda');
 const S = require('string');
 const sid = require('shortid');
+const env = require('./env/config');
 
 const input = require('./elements/readInput');
-const action = require('./actions/project');
+const actions = require('./project/actions');
 
 const askUser = async payload => {
   return await ask
@@ -43,7 +45,7 @@ const askUser = async payload => {
       }
     ])
     .then(collected => {
-      return R.merge(payload, collected);
+      return R.merge(R.assoc('id', sid.generate(), payload), collected);
     });
 };
 
@@ -60,8 +62,19 @@ addProject
   .option('-l, --label <name>', 'assign label to new project')
   .parse(process.argv);
 
-askUser(input.mapFromCli(addProject)).then(answer => {
-  console.log(
-    'Payload for API => ' + JSON.stringify(action.addProject(answer))
-  );
+env.getConfig().then(result => {
+  const cmdPayload = addProject.parse(process.argv);
+  if (result.config.portfolio) {
+    askUser(input.mapFromCli(cmdPayload)).then(answer => {
+      console.log(
+        'Payload for API => ' + JSON.stringify(actions.addProject(answer))
+      );
+    });
+  } else {
+    console.log(
+      chalk.red.bold(
+        '\f  Initialise this directory before trying to create a project!'
+      )
+    );
+  }
 });

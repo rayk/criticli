@@ -1,6 +1,6 @@
 {
   "name": "criticli",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticli.js",
   "repository": {

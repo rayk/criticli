@@ -1,7 +1,6 @@
 /**
  * Startup Module
  */
-const S = require('sanctuary');
 
 const env = require('../env/config');
 const pkg = require('../../package');
@@ -23,13 +22,6 @@ const maybeConfig = async version => {
     });
 };
 
-const isStoreInitialised = async () => {
-  return await maybeConfig(pkg.version).then(result => {
-    return !!result.error;
-  });
-};
-
 module.exports = {
-  maybeConfig,
-  isStoreInitialised
+  maybeConfig
 };
