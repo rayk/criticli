@@ -1,6 +1,6 @@
 {
   "name": "criticide-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Criticide Command Line Interface",
   "main": "bin/criticide.js",
   "repository": {
@@ -44,6 +44,7 @@
     "ora": "^1.3.0",
     "ramda": "^0.25.0",
     "redux": "^3.7.2",
+    "sanctuary": "^0.13.2",
     "shortid": "^2.2.8",
     "string": "^3.3.3"
   },
