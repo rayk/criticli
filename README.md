@@ -4,7 +4,7 @@ Command Line Interface access to the criticide-engine. The cli collects input fr
 
 Install the package globally.
 ```
-yarn global add criticide-cli
+yarn global add criticli
 ```
 
 

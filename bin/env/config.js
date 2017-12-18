@@ -1,8 +1,11 @@
+/**
+ * Configuration Module
+ */
 const io = require('./io-ops');
 const p = require('path');
 const CONFIG_FILE_NAME = 'criticide-config';
 
-const baseConfiguration = (name, homePath) => {
+const baseConfiguration = (name, homePath, version) => {
   return {
     state: {
       projects: {}
@@ -10,14 +13,15 @@ const baseConfiguration = (name, homePath) => {
     config: {
       path: homePath,
       initDate: new Date(),
-      portfolio: name
+      portfolio: name,
+      version: version
     }
   };
 };
 
 /**
  * Returns a configuration located in the path.
- * @param path
+ * @param {string} path
  */
 const getConfig = async path => {
   const pathProperties = p.parse(path);
@@ -31,12 +35,13 @@ const getConfig = async path => {
 
 /**
  * Orchestrates the initialisation of a portfolio, returning it's base state.
- * @param portfolioName
- * @param path
- * @return {Promise<void>}
+ * @param {string } portfolioName
+ * @param {string} path
+ * @param {string} version number of the cli
+ * @return {Promise<void>} full path of where the configuration was written
  */
-const initConfig = async (portfolioName, path) => {
-  const state = baseConfiguration(portfolioName, path);
+const initConfig = async (portfolioName, path, version) => {
+  const state = baseConfiguration(portfolioName, path, version);
   const emptyDirectory = await io.createSubDirectory(path);
   return await io
     .createJSONFile(emptyDirectory, CONFIG_FILE_NAME, state)
