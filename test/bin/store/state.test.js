@@ -1,4 +1,5 @@
 const assert = require('assert-plus');
+const should = require('should');
 const state = require('../../../bin/store/state');
 
 describe('Project State Store:', () => {
@@ -23,6 +24,6 @@ describe('Project State Store:', () => {
       }
     };
     const store = state.store(passedInState);
-    console.log(store.getState());
+    should.deepEqual(store.getState(), passedInState);
   });
 });

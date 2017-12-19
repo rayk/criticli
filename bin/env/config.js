@@ -4,7 +4,7 @@
 const fs = require('fs-extra');
 const io = require('./io-ops');
 const p = require('path');
-const pkg = require('../../package');
+const pkg = require('../../package.json');
 const CONFIG_FILE_NAME = 'criticide-config';
 
 /**

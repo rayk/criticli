@@ -3,7 +3,12 @@ module.exports = function(wallaby) {
     env: {
       type: 'node'
     },
-    files: ['bin/**/*.js', 'lib/**/*.js'],
+    files: [
+      'bin/**/*.js',
+      'lib/**/*.js',
+      'test/resources/*.js',
+      'package.json'
+    ],
     tests: ['test/bin/**/*.js', 'test/**/*.js'],
     testFramework: 'mocha',
     compilers: {
