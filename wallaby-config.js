@@ -11,8 +11,5 @@ module.exports = function(wallaby) {
     ],
     tests: ['test/bin/**/*.js', 'test/**/*.js'],
     testFramework: 'mocha',
-    compilers: {
-      '**/*.js': wallaby.compilers.babel()
-    }
   };
 };

@@ -23,7 +23,7 @@ const project_add_default_noForce_noLabel = {
 const project_add_default_noForce_label = {
   default: true,
   force: false,
-  label: [
+  labels: [
     {
       labelId: 'IS7NSU22P',
       label: 'Small Project',
@@ -39,7 +39,7 @@ const project_add_default_noForce_label = {
         'Denotes the project requires integration to existing systems.',
       created: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
       updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
-      active: true,
+      active: true
     }
   ],
   active: true,

@@ -62,21 +62,17 @@ const benefit_add_with_undesirable = {
   ]
 };
 
-const benefit_add_undesirable = {
-  benefitId: 'IUE347DQ381',
-  undesirableId: 'GPQ837YHZ',
-  label:
-    'Remain time portioned within consideration for undesirables and negations.',
-  determination:
-    'The remaining time is calculated with consideration to the number of negations and undesirables a benefit has.',
-  degree: 3,
-  active: true,
-  created: 'Tue Dec 19 2017 11:24:04 GMT+1100 (AEDT)',
-  updated: 'Tue Dec 19 2017 11:24:04 GMT+1100 (AEDT)'
+const benefit_add_with_negation = {
+
 };
+
+const benefit_add_with_undesirable_and_negation = {
+
+}
 
 module.exports = {
   benefit_add,
-  benefit_add_undesirable,
-  benefit_add_with_undesirable
+  benefit_add_with_negation,
+  benefit_add_with_undesirable,
+  benefit_add_with_undesirable_and_negation
 };
