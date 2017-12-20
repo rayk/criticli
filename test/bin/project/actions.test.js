@@ -29,7 +29,8 @@ describe('Forming actions from CLI new project inputs.', () => {
     const act = action.addProject(cliInput);
     const expected = {
       projectId: cliInput.projectId,
-      name: cliInput.name
+      name: cliInput.name,
+      defaultedOn: Date.parse(cliInput.updated)
     };
     should.equal(act.type, action.ADD_PROJECT, 'Action type inconsistent.');
     should.equal(R.view(proId, act), cliInput.projectId, 'ProjectId mutated.');
@@ -42,7 +43,8 @@ describe('Forming actions from CLI new project inputs.', () => {
     const act = action.addProject(cliInput);
     const expected = {
       projectId: cliInput.projectId,
-      name: cliInput.name
+      name: cliInput.name,
+      defaultedOn: Date.parse(cliInput.updated)
     };
     should.deepEqual(R.view(proDefault, act), expected, 'Default not added');
     should.equal(R.view(labels, act), inputLabels, 'Labels mutated.');

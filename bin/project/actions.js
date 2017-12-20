@@ -4,6 +4,7 @@ const ADD_PROJECT = 'ADD_PROJECT';
 const KEY_IS_DEFAULT = 'default';
 const KEY_PROJECT_ID = 'projectId';
 const KEY_PROJECT_NAME = 'name';
+const KEY_PROJECT_UPDATE = 'updated';
 const KEY_FORCE = 'force';
 
 const addDefaultObject = input =>
@@ -11,7 +12,8 @@ const addDefaultObject = input =>
     KEY_IS_DEFAULT,
     {
       projectId: R.prop(KEY_PROJECT_ID, input),
-      name: R.prop(KEY_PROJECT_NAME, input)
+      name: R.prop(KEY_PROJECT_NAME, input),
+      defaultedOn: Date.parse(R.prop(KEY_PROJECT_UPDATE, input))
     },
     input
   );

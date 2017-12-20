@@ -23,10 +23,17 @@ describe('Normalizations of project action payloads:', () => {
     const cliInput = input.project_add_default_noForce_noLabel;
     const payload = action.addProject(cliInput);
     const result = normalize(payload, schema.projectAction);
-    console.log(pretty.render(result));
+    const keyList = R.keys(result.entities);
+    const expectedDefaultId = Date.parse(cliInput.created);
+    const defaultEntity = R.view(schema.lensOn.entityDefault, result);
+    should.deepEqual(keyList, ['default', 'project'], 'Wrong keys');
+    should.equal(R.keys(defaultEntity), expectedDefaultId, 'Keys Mismatched');
   });
 
-  it('should normalise adding a project with labels.', () => {});
-
-
+  it('should normalise adding a project with labels.', () => {
+    const cliInput = input.project_add_default_noForce_label;
+    const payload = action.addProject(cliInput);
+    const result = normalize(payload, schema.projectAction);
+    console.log(pretty.render(result));
+  });
 });
