@@ -1,12 +1,12 @@
 const should = require('should');
-const schema = require('../../../bin/project/schema');
-const input = require('../../resources/cli-input-project-new');
-const action = require('../../../bin/project/actions');
+const schema = require('../../../../lib/project/schema');
+const input = require('../../../resources/cli-input-project-new');
+const action = require('../../../../lib/project/actions');
 const normalize = require('normalizr').normalize;
 const pretty = require('prettyjson');
 const R = require('ramda');
 
-describe('Normalizations of project action payloads:', () => {
+describe('Project New - Action payload normalisation:', () => {
   it('should normalise adding a project with no labels.', () => {
     const cliInput = input.project_add_noDefault_noForce_noLabel;
     const payload = action.addProject(cliInput);
@@ -34,6 +34,5 @@ describe('Normalizations of project action payloads:', () => {
     const cliInput = input.project_add_default_noForce_label;
     const payload = action.addProject(cliInput);
     const result = normalize(payload, schema.projectAction);
-    console.log(pretty.render(result));
   });
 });

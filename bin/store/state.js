@@ -1,7 +1,7 @@
 const redux = require('redux');
-const projectReducers = require('../project/reducers');
+const projectReducers = require('../../lib/project/reducers');
 
-let store = state => redux.createStore(projectReducers.reduceProject, state);
+let store = state => redux.createStore(projectReducers.project, state);
 
 module.exports = {
   store

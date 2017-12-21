@@ -7,7 +7,7 @@ const sid = require('shortid');
 const env = require('./env/config');
 
 const input = require('./elements/readInput');
-const actions = require('./project/actions');
+const actions = require('../lib/project/actions');
 
 const askUser = async payload => {
   return await ask

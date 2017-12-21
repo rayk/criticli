@@ -1,8 +1,8 @@
 const assert = require('assert-plus');
 const should = require('should');
-const state = require('../../../bin/store/state');
+const state = require('../../../../bin/store/state');
 
-describe('Project State Store:', () => {
+describe('State Store:', () => {
   it('returns a state store object', () => {
     const result = state.store({ a: 'b' });
     assert(result.dispatch);

@@ -1,7 +1,7 @@
 const R = require('ramda');
 const should = require('should');
-const input = require('../../resources/cli-input-project-new');
-const action = require('../../../bin/project/actions');
+const input = require('../../../resources/cli-input-project-new');
+const action = require('../../../../lib/project/actions');
 
 const payloadLens = R.lensPath(['payload']);
 const projectIdLens = R.lensPath(['projectId']);
@@ -14,7 +14,7 @@ const proDefault = R.compose(payloadLens, defaultLens);
 const labels = R.compose(payloadLens, labelListLens);
 const force = R.compose(payloadLens, forceValueLens);
 
-describe('Forming actions from CLI new project inputs.', () => {
+describe('Project New - Action create from CLI inputs:', () => {
   it('should handle new non default project with no label.', () => {
     const cliInput = input.project_add_noDefault_noForce_noLabel;
     should.equal(cliInput.default, false, 'Input should be default = false');
