@@ -12,20 +12,15 @@ const CONFIG_FILE_NAME = 'criticide-config';
  * @param name
  * @param homePath
  * @param version
- * @return {{state: {defaultProject: string, projects: {}}, config: {path: *, initDate: Date, portfolio: *, version: *}}}
+ * @return {{initDate: Date, path: string, portfolio: string, store: string, version: string}}
  */
 const baseConfiguration = (name, homePath, version) => {
   return {
-    state: {
-      defaultProject: '',
-      projects: {}
-    },
-    config: {
-      path: homePath,
-      initDate: new Date(),
-      portfolio: name,
-      version: version
-    }
+    initDate: new Date(),
+    path: homePath,
+    portfolio: name,
+    store: '',
+    version: version
   };
 };
 
@@ -33,15 +28,15 @@ const baseConfiguration = (name, homePath, version) => {
  * Returns a state object which may or may not be initialised.
  * @return {Promise<{{state: {defaultProject: string, projects: {}}, config: {path: string, initDate: Date, portfolio: string, version: string}}}>}
  */
-const getConfig = async () => {
-  const configFilePath = p.join(process.cwd(), CONFIG_FILE_NAME + '.json');
+const getConfig = async (path = process.cwd()) => {
+  const configFilePath = p.join(path, CONFIG_FILE_NAME + '.json');
   return await fs
     .readJSON(configFilePath)
     .then(output => {
       return output;
     })
     .catch(err => {
-      return baseConfiguration(undefined, process.cwd(), pkg.version);
+      return baseConfiguration(undefined, configFilePath, pkg.version);
     });
 };
 
