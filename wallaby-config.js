@@ -1,4 +1,4 @@
-module.exports = function(wallaby) {
+module.exports = function() {
   return {
     env: {
       type: 'node'
@@ -9,7 +9,7 @@ module.exports = function(wallaby) {
       'test/resources/*.js',
       'package.json'
     ],
-    tests: ['test/bin/**/*.js', 'test/**/*.js'],
-    testFramework: 'mocha',
+    tests: ['test/unit/**/*.js'],
+    testFramework: 'mocha'
   };
 };
