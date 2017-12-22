@@ -6,5 +6,7 @@ const action = require('../../../../lib/project/actions');
 const cliInput = require('../../../resources/cli-input-project-new');
 
 describe('Project Sate - Reducers:', () => {
-  it('should add new project to the state', () => {});
+  it('should add new project to the state', () => {
+
+  });
 });

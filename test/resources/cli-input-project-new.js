@@ -5,8 +5,8 @@ const project_add_noDefault_noForce_noLabel = {
   active: true,
   projectId: 'SJ7Lk2rMz',
   name: 'Test Stub Project 1',
-  created: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
-  updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)'
+  created: new Date('Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)'),
+  updated: new Date('Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)')
 };
 
 const project_add_default_noForce_noLabel = {
