@@ -1,6 +1,7 @@
 const fs = require('fs-extra');
 const S = require('string');
 const path = require('path');
+const serialise = require('serialize-javascript');
 
 /**
  * Returns the full path to the newly created JSON file.
@@ -11,8 +12,9 @@ const path = require('path');
  */
 const createJSONFile = async (directory, name, content) => {
   const target = path.join(directory, S(name).slugify().s + '.json');
+  const serialised = serialise(content);
   return await fs
-    .writeJSON(target, content)
+    .writeJSON(target, serialised)
     .then(() => {
       return target;
     })
@@ -46,7 +48,7 @@ const readJSONFile = async fullPath => {
   return await fs
     .readJSON(fullPath)
     .then(content => {
-      return content;
+      return eval('(' + content + ')');
     })
     .catch(err => {
       return err;

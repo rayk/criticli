@@ -106,3 +106,5 @@ fabric.properties
 /.env
 /dist/
 /distribution/
+/temp2/
+/temp1/

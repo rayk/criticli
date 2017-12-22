@@ -46,7 +46,9 @@
     "prettyjson": "^1.2.1",
     "ramda": "^0.25.0",
     "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
     "sanctuary": "^0.13.2",
+    "serialize-javascript": "^1.4.0",
     "shortid": "^2.2.8",
     "string": "^3.3.3"
   },

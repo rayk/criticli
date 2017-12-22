@@ -6,6 +6,7 @@ const io = require('./io-ops');
 const p = require('path');
 const pkg = require('../../package.json');
 const CONFIG_FILE_NAME = 'criticide-config';
+const STORE_FILE_NAME = 'criticide-store';
 
 /**
  * Initial State Object
@@ -17,23 +18,22 @@ const CONFIG_FILE_NAME = 'criticide-config';
 const baseConfiguration = (name, homePath, version) => {
   return {
     initDate: new Date(),
-    path: homePath,
+    path: p.join(homePath, CONFIG_FILE_NAME + '.json'),
     portfolio: name,
-    store: '',
+    store: p.join(homePath, STORE_FILE_NAME + '.json'),
     version: version
   };
 };
 
 /**
  * Returns a state object which may or may not be initialised.
- * @return {Promise<{{state: {defaultProject: string, projects: {}}, config: {path: string, initDate: Date, portfolio: string, version: string}}}>}
  */
 const getConfig = async (path = process.cwd()) => {
   const configFilePath = p.join(path, CONFIG_FILE_NAME + '.json');
   return await fs
     .readJSON(configFilePath)
     .then(output => {
-      return output;
+      return eval('(' + output + ')');
     })
     .catch(err => {
       return baseConfiguration(undefined, configFilePath, pkg.version);
@@ -44,16 +44,18 @@ const getConfig = async (path = process.cwd()) => {
  * Orchestrates the initialisation of a portfolio, returning it's base state.
  * @param {string } portfolioName
  * @param {string} path
- * @param {string} version number of the cli
  * @return {Promise<void>} full path of where the configuration was written
  */
-const initConfig = async (portfolioName, path, version) => {
-  const state = baseConfiguration(portfolioName, path, version);
+const initConfig = async (portfolioName, path = process.cwd()) => {
+  const content = baseConfiguration(portfolioName, path, pkg.version);
   const emptyDirectory = await io.createSubDirectory(path);
-  await io
-    .createJSONFile(emptyDirectory, CONFIG_FILE_NAME, state)
+  return await io
+    .createJSONFile(emptyDirectory, CONFIG_FILE_NAME, content)
     .then(fullPath => {
       return fullPath;
+    })
+    .catch(err => {
+      return err;
     });
 };
 
