@@ -1,3 +1,33 @@
+/**
+ * Initial State of the Project Slice.
+ * @type {{allProjects: {}, allLabels: Array, defaultProject: Array}}
+ */
+const projectSliceInitialEmptyState = {
+  allProjects: {},
+  allLabels: {},
+  defaultProject: {}
+};
+
+/**
+ * Project lice of state populated with one simple project.
+ * @type {{allProjects: {CTR999ZZZ: {projectId: string, name: string, description: string, isDefault: boolean, label: boolean, created: Date, updated: Date}}, allLabels: {}, defaultProject: {}}}
+ */
+const projectSliceSinglePopulatedState = {
+  allProjects: {
+    CTR999ZZZ: {
+      projectId: 'CTR999ZZZ',
+      name: 'Control Place Holder Project',
+      description: 'This entity is a place holder used in testing.',
+      isDefault: false,
+      label: false,
+      created: new Date('Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)'),
+      updated: new Date('Tue Dec 19 2017 11:39:21 GMT+1100 (AEDT)')
+    }
+  },
+  allLabels: {},
+  defaultProject: {}
+};
+
 const state = {
   projects: {
     2837: {
@@ -63,4 +93,8 @@ const state = {
   }
 };
 
-module.exports = { state };
+module.exports = {
+  state,
+  projectSliceInitialEmptyState,
+  projectSliceSinglePopulatedState
+};

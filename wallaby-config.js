@@ -1,4 +1,7 @@
-module.exports = function() {
+module.exports = function () {
+
+  process.env.NODE_ENV = 'development';
+
   return {
     env: {
       type: 'node'

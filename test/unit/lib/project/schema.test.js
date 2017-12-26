@@ -1,38 +1,60 @@
 const should = require('should');
-const schema = require('../../../../lib/project/schema');
-const input = require('../../../resources/cli-input-project-new');
-const action = require('../../../../lib/project/actions');
-const normalize = require('normalizr').normalize;
-const pretty = require('prettyjson');
 const R = require('ramda');
+const schema = require('../../../../lib/project/schema');
+const cliIn = require('../../../resources/cli-input-project-new');
+const pre = require('../../../../lib/project/input-processor');
 
-describe('Project New - Action payload normalisation:', () => {
-  it('should normalise adding a project with no labels.', () => {
-    const cliInput = input.project_add_noDefault_noForce_noLabel;
-    const payload = action.addProject(cliInput);
-    const result = normalize(payload, schema.projectAction);
-    const actionType = R.view(schema.lensOn.valueActionType, result);
-    const resultProjectId = R.view(schema.lensOn.valuePayload, result);
-    const normProject = R.view(schema.lensOn.entityProject, result);
-    should.equal(actionType, action.ADD_PROJECT, 'Mismatched Action.');
-    should.equal(resultProjectId, payload.payload.projectId);
-    should.deepEqual(normProject[resultProjectId], payload.payload);
+describe('Schema for normalising input from add project:', () => {
+  it('should normalise an input for new project without labels, that not default.', () => {
+    const input = pre.process(cliIn.project_add_noDefault_noForce_noLabel);
+    const result = schema.normaliseActionPayload(input);
+    result.should.have.properties('entities', 'result');
+    result.entities.project.should.not.be.empty();
+    result.entities.should.not.have.properties('labels');
+    result.entities.should.not.have.properties('defaultProjects');
+    const projectEntity = R.view(schema.lens.projectEntity, result);
+    projectEntity[input.projectId].should.not.be.empty();
+    projectEntity[input.projectId].should.have.properties(
+      'default',
+      'label',
+      'active',
+      'projectId',
+      'name',
+      'created',
+      'updated'
+    );
+  });
+  it('should normalise an input for new project without labels, that is default.  ', () => {
+    const input = pre.process(cliIn.project_add_default_noForce_noLabel);
+    const result = schema.normaliseActionPayload(input);
+    result.entities.project.should.not.be.empty();
+    result.entities.should.not.have.properties('labels');
+    result.entities.should.have.properties('project', 'defaultProjects');
+    const defaultEntity = R.view(schema.lens.defaultProject, result);
+    const defaultEntityMap = defaultEntity[Date.parse(input.updated)];
+    defaultEntityMap.should.not.be.empty();
+    defaultEntityMap.should.have.properties('projectId', 'name', 'defaultedOn');
   });
 
-  it('should normalise adding a new default project.', () => {
-    const cliInput = input.project_add_default_noForce_noLabel;
-    const payload = action.addProject(cliInput);
-    const result = normalize(payload, schema.projectAction);
-    const keyList = R.keys(result.entities);
-    const expectedDefaultId = Date.parse(cliInput.created);
-    const defaultEntity = R.view(schema.lensOn.entityDefault, result);
-    should.deepEqual(keyList, ['default', 'project'], 'Wrong keys');
-    should.equal(R.keys(defaultEntity), expectedDefaultId, 'Keys Mismatched');
+  it('should normalise an input for new project with labels, that is not default.', () => {
+    const input = pre.process(cliIn.project_add_noDefault_noForce_label);
+    const result = schema.normaliseActionPayload(input);
+    const projectEntity = R.view(schema.lens.projectEntity, result);
+    const labelEntity = R.view(schema.lens.labelsEntity, result);
+    result.entities.project.should.not.be.empty();
+    result.entities.should.have.properties('project', 'labels');
+    result.entities.should.not.have.property('default');
+    const projectMap = projectEntity[input.projectId];
+    projectMap.should.not.be.empty();
+    projectMap.labels.should.have.lengthOf(R.keys(labelEntity).length);
   });
-
-  it('should normalise adding a project with labels.', () => {
-    const cliInput = input.project_add_default_noForce_label;
-    const payload = action.addProject(cliInput);
-    const result = normalize(payload, schema.projectAction);
+  it('should normalise an input for new project with labels, that is default.', () => {
+    const input = pre.process(cliIn.project_add_default_noForce_label);
+    const result = schema.normaliseActionPayload(input);
+    result.entities.should.have.properties(
+      'defaultProjects',
+      'project',
+      'labels'
+    );
   });
 });

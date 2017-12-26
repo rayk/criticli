@@ -49,6 +49,35 @@ const project_add_default_noForce_label = {
   updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)'
 };
 
+const project_add_noDefault_noForce_label = {
+  default: false,
+  force: false,
+  labels: [
+    {
+      labelId: 'IS7NSU22P',
+      label: 'Small Project',
+      description: 'Used to denote a project is small.',
+      created: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
+      updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
+      active: true
+    },
+    {
+      labelId: 'NH82NH9J7',
+      label: 'Unique Label',
+      description:
+        'Just simple label that has not been used by other projects.',
+      created: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
+      updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
+      active: true
+    }
+  ],
+  active: true,
+  projectId: 'KNW93JT8U',
+  name: 'Test Stub Project 3',
+  created: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)',
+  updated: 'Tue Dec 19 2017 11:22:04 GMT+1100 (AEDT)'
+};
+
 const project_add_noDefault_force_noLabel = {
   default: false,
   force: true,
@@ -61,8 +90,9 @@ const project_add_noDefault_force_noLabel = {
 };
 
 module.exports = {
-  project_add_noDefault_noForce_noLabel,
-  project_add_default_noForce_noLabel,
   project_add_default_noForce_label,
-  project_add_noDefault_force_noLabel
+  project_add_default_noForce_noLabel,
+  project_add_noDefault_force_noLabel,
+  project_add_noDefault_noForce_label,
+  project_add_noDefault_noForce_noLabel
 };
