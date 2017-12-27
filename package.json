@@ -37,7 +37,6 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
-    "dotenv": "^4.0.0",
     "fs-extra": "^5.0.0",
     "inquirer": "^4.0.1",
     "moch": "0.0.1",
@@ -56,11 +55,11 @@
     "assert-plus": "^1.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
+    "babel-eslint": "^8.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
-    "eslint": "^4.13.0",
+    "eslint": "^4.14.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-prettier": "^2.3.1",
@@ -68,7 +67,7 @@
     "jsdoc": "^3.5.5",
     "mocha": "^4.0.1",
     "prettier": "^1.9.1",
-    "prettier-eslint": "^8.3.1",
+    "prettier-eslint": "^8.6.2",
     "should": "^13.1.3"
   },
   "babel": {
