@@ -1,6 +1,6 @@
 const should = require('should');
 const pre = require('../../../../lib/project/input-processor');
-const cliInput = require('../../../resources/cli-input-project-new');
+const cliInput = require('../../../resources/cliInputs/cli-input-project-new');
 
 describe('PreProcess New Project Inputs:', () => {
   it('should drop the cli overwrite force key', () => {

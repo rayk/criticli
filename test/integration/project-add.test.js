@@ -4,7 +4,7 @@ const shortId = require('shortid');
 const env = require('../../bin/env/config');
 const p = require('path');
 const fs = require('fs-extra');
-const cliInput = require('../resources/cli-input-project-new');
+const cliInput = require('../resources/cliInputs/cli-input-project-new');
 
 describe('Given there are no projects.', () => {
   let configObject;

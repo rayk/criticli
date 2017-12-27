@@ -1,5 +1,5 @@
 const should = require('should');
-const input = require('../../../resources/cli-input-project-new');
+const input = require('../../../resources/cliInputs/cli-input-project-new');
 const action = require('../../../../lib/project/actions');
 
 describe('Project New - Creating an FSA from CLI inputs.', () => {

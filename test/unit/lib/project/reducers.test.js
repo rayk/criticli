@@ -1,9 +1,9 @@
 const should = require('should');
 const pretty = require('prettyjson');
-const fake = require('../../../resources/store');
+const fake = require('../../../resources/storeX');
 const project = require('../../../../lib/project/reducer');
 const action = require('../../../../lib/project/actions');
-const cliInput = require('../../../resources/cli-input-project-new');
+const cliInput = require('../../../resources/cliInputs/cli-input-project-new');
 
 describe('Project State Reduce - Initial Call:', () => {
   it('should return the empty initial state.', () => {

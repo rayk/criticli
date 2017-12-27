@@ -1,5 +1,5 @@
 const select = require('../../../../bin/elements/selector');
-const state = require('../../../resources/store.js');
+const state = require('../../../resources/storeX.js');
 const assert = require('assert-plus');
 
 describe('Project Selector:', () => {

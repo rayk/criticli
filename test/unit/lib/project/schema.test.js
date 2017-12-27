@@ -1,7 +1,7 @@
 const should = require('should');
 const R = require('ramda');
 const schema = require('../../../../lib/project/schema');
-const cliIn = require('../../../resources/cli-input-project-new');
+const cliIn = require('../../../resources/cliInputs/cli-input-project-new');
 const pre = require('../../../../lib/project/input-processor');
 
 describe('Schema for normalising input from add project:', () => {
