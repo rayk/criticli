@@ -6,6 +6,7 @@ const pkg = require('../../package');
 const env = require('../../bin/env/config');
 
 describe('Given a configuration does not exist:', () => {
+  process.env.NODE_ENV = 'development';
   const TEST_SAFE_DIRECTORY_ONE = p.join(process.cwd(), '/temp1/configTest');
   const NEW_PORTFOLIO_NAME_ONE = 'Integration Test Portfolio 1';
 

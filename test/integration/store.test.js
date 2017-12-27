@@ -10,6 +10,7 @@ describe('Given a State Store does not exist:', () => {
 
   before(async () => {
     await env.initConfig(TEST_PORTFOLIO_NAME, TEST_SAFE_DIRECTORY);
+    console.log(process.env.NODE_ENV);
   });
 
   after(async () => {
@@ -20,8 +21,22 @@ describe('Given a State Store does not exist:', () => {
 
   it('should return a empty state store.', async () => {
     const configObject = await env.getConfig(TEST_SAFE_DIRECTORY);
-    api.storeGet(configObject).then(store => {
-      console.log(store.getState());
+    api.storeGet(configObject).then(stateStore => {
+      stateStore.should.have.properties(
+        'dispatch',
+        'subscribe',
+        'getState',
+        'replaceReducer'
+      );
+      const state = stateStore.getState();
+      state.should.have.properties('benefitSlice', 'projectSlice');
+      state.projectSlice.should.have.properties(
+        'projects',
+        'labels',
+        'defaultProject'
+      );
+      state.projectSlice.should.not.have.properties('undefined');
+      console.log(state);
     });
   });
 });

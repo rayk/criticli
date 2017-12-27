@@ -46,9 +46,11 @@
     "prettyjson": "^1.2.1",
     "ramda": "^0.25.0",
     "redux": "^3.7.2",
+    "redux-loop": "^4.2.4",
     "serialize-javascript": "^1.4.0",
     "shortid": "^2.2.8",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "assert-plus": "^1.0.0",

@@ -3,10 +3,13 @@
  */
 const fs = require('fs-extra');
 const io = require('./io-ops');
+const logProvider = require('./logger');
 const p = require('path');
 const pkg = require('../../package.json');
 const CONFIG_FILE_NAME = 'criticide-config';
 const STORE_FILE_NAME = 'criticide-store';
+
+
 
 /**
  * Initial State Object
@@ -29,13 +32,16 @@ const baseConfiguration = (name, homePath, version) => {
  * Returns a state object which may or may not be initialised.
  */
 const getConfig = async (path = process.cwd()) => {
+  const log = logProvider();
   const configFilePath = p.join(path, CONFIG_FILE_NAME + '.json');
   return await fs
     .readJSON(configFilePath)
     .then(output => {
+      log.info('Persisted config retrieved.');
       return eval('(' + output + ')');
     })
     .catch(err => {
+      log.info(`Persisted config not found at ${configFilePath}`);
       return baseConfiguration(undefined, configFilePath, pkg.version);
     });
 };
