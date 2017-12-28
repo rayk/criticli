@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
-
+const assert = require('assert-plus');
+const chalk = require('chalk');
 const cli = require('commander');
 const R = require('ramda');
 const pkg = require('../package');
-const chalk = require('chalk');
 
 const env = require('./env/config');
 

@@ -35,6 +35,7 @@
     "distro": "babel bin --presets babel-preset-env --out-dir distribution"
   },
   "dependencies": {
+    "assert-plus": "^1.0.0",
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
     "fs-extra": "^5.0.0",
@@ -49,10 +50,9 @@
     "serialize-javascript": "^1.4.0",
     "shortid": "^2.2.8",
     "string": "^3.3.3",
-    "winston": "^2.4.0"
+    "winston": "^3.0.0-rc1"
   },
   "devDependencies": {
-    "assert-plus": "^1.0.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
